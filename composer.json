@@ -1,0 +1,144 @@
+{
+    "name": "guanguans/laravel-exception-notify",
+    "description": "Multiple channels of laravel exception notification(Bark、Chanify、DingTalk、FeiShu、ServerChan、WeWork、XiZhi). - 多种通道的 laravel 异常通知(Bark、Chanify、钉钉群机器人、飞书群机器人、Server 酱、企业微信群机器人、息知)。",
+    "keywords": [
+        "laravel",
+        "notification",
+        "notify",
+        "notifier",
+        "exception",
+        "error",
+        "notice",
+        "monitor",
+        "SDK",
+        "sdk",
+        "bark",
+        "chanify",
+        "dingTalk",
+        "feiShu",
+        "serverChan",
+        "weWork",
+        "xiZhi",
+        "钉钉群机器人",
+        "机器人",
+        "钉钉群",
+        "钉钉",
+        "飞书群机器人",
+        "飞书",
+        "Server酱",
+        "企业微信群机器人",
+        "企业微信",
+        "微信",
+        "息知"
+    ],
+    "homepage": "https://github.com/guanguans/laravel-exception-notify",
+    "support": {
+        "issues": "https://github.com/guanguans/laravel-exception-notify/issues",
+        "source": "https://github.com/guanguans/laravel-exception-notify"
+    },
+    "authors": [
+        {
+            "name": "guanguans",
+            "email": "ityaozm@gmail.com",
+            "homepage": "https://www.guanguans.cn",
+            "role": "developer"
+        }
+    ],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.2",
+        "guanguans/notify": "^1.0",
+        "illuminate/bus": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+        "illuminate/contracts": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+        "illuminate/queue": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+        "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0"
+    },
+    "require-dev": {
+        "brainmaestro/composer-git-hooks": "^2.7",
+        "friendsofphp/php-cs-fixer": "^2.16 || ^3.0",
+        "mockery/mockery": "^1.2",
+        "nyholm/nsa": "^1.2",
+        "overtrue/phplint": "^2.4 || ^3.0",
+        "phpbench/phpbench": "^1.0",
+        "phpunit/phpunit": "^7.0 || ^8.0",
+        "vimeo/psalm": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Guanguans\\LaravelExceptionNotify\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Guanguans\\LaravelExceptionNotify\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "funding": [
+        {
+            "type": "wechat",
+            "url": "https://www.guanguans.cn/images/wechat.jpeg"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Guanguans\\LaravelExceptionNotify\\ExceptionNotifyServiceProvider"
+            ],
+            "aliases": {
+                "ExceptionNotifier": "Guanguans\\LaravelExceptionNotify\\Facades\\Notifier"
+            }
+        },
+        "hooks": {
+            "pre-commit": [
+                "composer lint",
+                "composer style-lint",
+                "composer md-lint",
+                "composer test"
+            ],
+            "pre-push": [
+                "composer lint",
+                "composer style-lint",
+                "composer md-lint",
+                "composer test"
+            ]
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "cghooks update"
+        ],
+        "post-merge": "composer install",
+        "post-install-cmd": [
+            "cghooks add --ignore-lock",
+            "cghooks update"
+        ],
+        "cghooks": "./vendor/bin/cghooks",
+        "lint": "./vendor/bin/phplint --no-cache --configuration=.phplint.yml --ansi",
+        "md-lint": "lint-md --config .lintmdrc *.md .github/*.md .github/ISSUE_TEMPLATE/*.md",
+        "md-fix": "lint-md --config .lintmdrc --fix *.md .github/*.md .github/ISSUE_TEMPLATE/*.md",
+        "style-lint": "./vendor/bin/php-cs-fixer fix --using-cache=no --diff --config=.php-cs-fixer.dist.php --dry-run --ansi",
+        "style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.dist.php --ansi",
+        "psalm": "./vendor/bin/psalm",
+        "test": "./vendor/bin/phpunit --coverage-text --colors=always --verbose",
+        "test-coverage": "./vendor/bin/phpunit --coverage-html=coverage/ --coverage-clover=clover.xml --color=always --verbose",
+        "benchmark": "./vendor/bin/phpbench run --retry-threshold=3 --iterations=15 --revs=1000 --warmup=2"
+    },
+    "scripts-descriptions": {
+        "cghooks": "Run git cghooks.",
+        "lint": "Run phplint checks.",
+        "md-lint": "Run markdown checks.",
+        "md-fix": "Run markdown fixing.",
+        "style-lint": "Run style checks (only dry run - no fixing!).",
+        "style-fix": "Run style checks and fix violations.",
+        "psalm": "Run psalm checks.",
+        "test": "Run all tests.",
+        "test-coverage": "Run all tests with coverage.",
+        "benchmark": "Run all benchmark."
+    }
+}
