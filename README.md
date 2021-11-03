@@ -31,7 +31,7 @@
 ## 安装
 
 ```bash
-$ composer require guanguans/laravel-exception-notify -vvv
+$ composer require bing-leng-dt/laravel-exception-notify-xiavan -vvv
 ```
 
 ## 配置
