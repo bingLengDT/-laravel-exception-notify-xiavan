@@ -1,6 +1,4 @@
-# laravel-exception-notify
-
-![usage](docs/usage.png)
+# laravel-exception-notify-xiavan
 
 [简体中文](README.md) | [ENGLISH](README-EN.md)
 
