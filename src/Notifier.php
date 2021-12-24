@@ -142,9 +142,13 @@ md;
 
     protected function collectExceptionInformation(Throwable $exception): array
     {
+        $exceptionMessage = $exception->getMessage();
+        if (get_class($exception) == 'Illuminate\Validation\ValidationException') {
+            $exceptionMessage = Arr::first($exception->errors())[0] ?? '请求参数不合法';
+        }
         return array_filter([
             sprintf('Exception Class: %s', get_class($exception)),
-            sprintf('Exception Message: %s', $exception->getMessage()),
+            sprintf('Exception Message: %s', $exceptionMessage),
             sprintf('Exception Code: %s', $exception->getCode()),
             sprintf('Exception File: %s', $exception->getFile()),
             sprintf('Exception Line: %s', $exception->getLine()),
